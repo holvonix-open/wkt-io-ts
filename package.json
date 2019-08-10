@@ -1,13 +1,18 @@
 {
   "name": "wkt-io-ts",
   "version": "0.1.0-alpha.1",
-  "description": "TODO",
+  "description": "io-ts codecs to/from WKT (via GeoJson)",
   "repository": {
     "type": "git",
     "url": "https://github.com/holvonix-open/wkt-io-ts.git"
   },
   "keywords": [
-    "TODO"
+    "wkt",
+    "well-known text",
+    "well-known-text",
+    "geojson",
+    "io-ts",
+    "parser"
   ],
   "engines": {
     "node": "^10.0.0 || ^ 12.0.0",

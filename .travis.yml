@@ -11,14 +11,14 @@ before_install:
 cache: yarn
 install:
   - yarn --frozen-lockfile
-before_script:
-  - export FAKE_HOSTNAME=travis-box
 script: yarn test-coverage
 
 stages:
   - name: test
   - name: release
-    if: branch = master AND type = push
+    if:
+      env(GH_TOKEN) is present AND (NOT fork) AND branch = master AND type =
+      push AND (NOT (commit_message =~ /skip-release/ ) )
 jobs:
   include:
     - stage: release
