@@ -1,3 +1,16 @@
+## [1.0.1](https://github.com/holvonix-open/wkt-io-ts/compare/v1.0.0...v1.0.1) (2019-08-10)
+
+
+### 📖 Documentation
+
+* add min size badge [skip-release] ([83ecb5f](https://github.com/holvonix-open/wkt-io-ts/commit/83ecb5f))
+
+
+### 🧦 Miscellaneous
+
+* upgrade dev deps ([3fc5900](https://github.com/holvonix-open/wkt-io-ts/commit/3fc5900))
+* **deps-dev:** bump io-ts-fuzzer from 4.1.1 to 4.1.3 ([#4](https://github.com/holvonix-open/wkt-io-ts/issues/4)) ([cdc77f8](https://github.com/holvonix-open/wkt-io-ts/commit/cdc77f8))
+
 # 1.0.0 (2019-08-10)
 
 
