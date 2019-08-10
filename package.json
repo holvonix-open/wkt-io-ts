@@ -1,6 +1,6 @@
 {
   "name": "wkt-io-ts",
-  "version": "0.1.0-alpha.1",
+  "version": "1.0.0",
   "description": "io-ts codecs to/from WKT (via GeoJson)",
   "repository": {
     "type": "git",
