@@ -1,8 +1,8 @@
 /*!
-# hx-node-template
+# wkt-io-ts
 
 This product contains software originally developed by Holvonix LLC.
-Original Repository: https://github.com/holvonix-open/hx-node-template
+Original Repository: https://github.com/holvonix-open/wkt-io-ts
 
 Copyright (c) 2019 Holvonix LLC. All rights reserved.
 
@@ -18,7 +18,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Third-party dependencies may have their own licenses.
+Dependencies may have their own licenses.
 */
 
 export function todo() {
