@@ -1,29 +1,18 @@
 import { assert } from 'chai';
 import * as lib from '../src/';
-import * as t from 'io-ts';
 import * as geojson from '@holvonix-open/geojson-io-ts';
-import { createCoreRegistry, fuzzContext, Fuzzer } from 'io-ts-fuzzer';
+import {
+  createCoreRegistry,
+  fuzzContext,
+  Fuzzer,
+  experimental,
+} from 'io-ts-fuzzer';
 import { isRight, isLeft } from 'fp-ts/lib/Either';
 import { nonEmptyArray } from 'io-ts-types/lib/nonEmptyArray';
-import { NonEmptyArray, cons } from 'fp-ts/lib/NonEmptyArray';
-
-const fuzzNonEmptyArray = <T>(
-  c: t.Type<T, unknown>
-): Fuzzer<NonEmptyArray<T>, unknown> => ({
-  id: `NonEmptyArray<${c.name}>`,
-  idType: 'name',
-  impl: {
-    type: 'fuzzer',
-    children: [c, t.array(c)],
-    func: (ctx, n0, hc, ha) => {
-      return cons(hc.encode([n0, ctx]) as T, ha.encode([n0, ctx]) as T[]);
-    },
-  },
-});
 
 const coordFuzzers = [
-  fuzzNonEmptyArray(geojson.PositionIO),
-  fuzzNonEmptyArray(nonEmptyArray(geojson.PositionIO)),
+  experimental.nonEmptyArrayFuzzer(geojson.PositionIO),
+  experimental.nonEmptyArrayFuzzer(nonEmptyArray(geojson.PositionIO)),
 ];
 
 describe('wkt', () => {
