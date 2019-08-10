@@ -1,8 +1,7 @@
 import * as wkx from 'wkx';
 import * as geojson from '@holvonix-open/geojson-io-ts';
 import * as t from 'io-ts';
-import { either, right, isRight } from 'fp-ts/lib/Either';
-import { getRight, isSome } from 'fp-ts/lib/Option';
+import { either, isRight } from 'fp-ts/lib/Either';
 import { inspect } from 'util';
 
 export interface WKTBrand {

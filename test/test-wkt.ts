@@ -1,19 +1,10 @@
 import { assert } from 'chai';
 import * as lib from '../src/';
-import * as fuzz from 'io-ts-fuzzer';
 import * as t from 'io-ts';
 import * as geojson from '@holvonix-open/geojson-io-ts';
-import {
-  createCoreRegistry,
-  loadIoTsTypesFuzzers,
-  fuzzContext,
-  ConcreteFuzzer,
-  ImmediateConcreteFuzzer,
-  concreteFuzzerByName,
-  Fuzzer,
-} from 'io-ts-fuzzer';
+import { createCoreRegistry, fuzzContext, Fuzzer } from 'io-ts-fuzzer';
 import { isRight, isLeft } from 'fp-ts/lib/Either';
-import { nonEmptyArray, NonEmptyArrayC } from 'io-ts-types/lib/nonEmptyArray';
+import { nonEmptyArray } from 'io-ts-types/lib/nonEmptyArray';
 import { NonEmptyArray, cons } from 'fp-ts/lib/NonEmptyArray';
 
 const fuzzNonEmptyArray = <T>(
