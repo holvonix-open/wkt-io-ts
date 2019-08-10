@@ -21,6 +21,4 @@ limitations under the License.
 Dependencies may have their own licenses.
 */
 
-export function todo() {
-  return true;
-}
+export * from './wkt';

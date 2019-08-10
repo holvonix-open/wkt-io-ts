@@ -1,4 +1,4 @@
-# wkt-io-ts -
+# wkt-io-ts - validates, encodes, and decodes between GeoJSON and WKT strings
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](./LICENSE)
 [![npm](https://img.shields.io/npm/v/wkt-io-ts.svg)](https://www.npmjs.com/package/wkt-io-ts)
@@ -12,14 +12,28 @@
 
 ## Quick Start
 
-After `yarn add wkt-io-ts`:
+After `yarn add wkt-io-ts fp-ts`:
 
 ```typescript
-import { TODO } from 'wkt-io-ts';
+import { GeometryFromWKTString, WKTStringFromGeometry } from 'wkt-io-ts';
+import { isRight } from 'fp-ts/lib/Either';
 
-async function getIt() {
-  // TODO
+const maybeWkt = 'LINESTRING (29.3 -5, 13 30, 50 32)';
+const maybeGJ = GeometryFromWKTString.decode(maybeWkt);
+if (!isRight(maybeGJ)) {
+  // did not validate as WKT
+  throw new Error();
 }
+// geojson
+console.log(maybeGJ.right);
+
+const outWkt = WKTStringFromGeometry.decode(maybeGJ.right);
+if (!isRight(outWkt)) {
+  // did not validate as GeoJSON
+  throw new Error();
+}
+// wkt
+console.log(outWkt.right);
 ```
 
 ## License

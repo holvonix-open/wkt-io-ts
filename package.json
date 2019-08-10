@@ -56,7 +56,7 @@
     "lint": "yarn fix && yarn run check",
     "check": "yarn run pretty.check && gts check",
     "fix": "yarn run pretty.fix && gts fix",
-    "test.examples": "echo no examples",
+    "test.examples": "cd examples/quickstart && ts-node index.ts",
     "preversion": "yarn test && yarn test.examples",
     "docs": "yarn clean && yarn build && rm -rf docs && mkdir -p docs && ( mocha --grep='#private' --invert -R markdown >docs/index.md )",
     "test-unit": "yarn test --grep='#e2e|#int' --invert",
@@ -107,15 +107,20 @@
     "spec": "./build/test/**/test-*.js"
   },
   "dependencies": {
-    "@holvonix-misc/geojson-iots": "^3.0.1",
+    "@holvonix-open/geojson-io-ts": "^5.0.0",
     "fp-ts": "^2.0.5",
     "io-ts": "^2.0.1",
+    "io-ts-types": "^0.5.0",
+    "monocle-ts": "^2.0.0",
     "wkx": "^0.4.8"
   },
   "devDependencies": {
     "@holvonix-open/release-config-js": "^1.0.3",
+    "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "@types/node": "^12.7.1",
+    "chai": "^4.2.0",
+    "chokidar-cli": "^2.0.0",
     "codecov": "^3.4.0",
     "concurrently": "^4.1.1",
     "gts": "^1.0.0",
