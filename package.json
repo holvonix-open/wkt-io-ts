@@ -1,0 +1,119 @@
+{
+  "name": "hx-node-template",
+  "version": "0.1.0-alpha.1",
+  "description": "TODO",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holvonix-open/hx-node-template.git"
+  },
+  "keywords": [
+    "TODO"
+  ],
+  "engines": {
+    "node": "^10.0.0 || ^ 12.0.0",
+    "yarn": "^1.0.0"
+  },
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src/**/*.js",
+    "build/src/**/*.d.ts",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "author": "Holvonix LLC",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "t": "yarn test  --inspect --grep='#e2e|#int' --invert",
+    "watch:build": "yarn run --silent build:core --watch",
+    "watch:test": "yarn run --silent test-impl --watch --grep='#e2e|#int' --invert -R min",
+    "watch:test-cov": "chokidar --throttle 750 --debounce 500 --silent --initial \"build/**/*.js\" -c \"yarn run --silent watch:test-impl\"",
+    "watch:test-impl": "yarn run --silent test-impl-lcov --grep='#e2e|#int' --invert -R min",
+    "w": "yarn run clean && yarn run build && concurrently --raw -n tsc,mocha \"yarn run --silent watch:build\" \"yarn run --silent watch:test\"",
+    "wc": "yarn run clean && yarn run build && concurrently --raw -n tsc,mocha \"yarn run --silent watch:build\" \"yarn run --silent watch:test-cov\"",
+    "prepare": "yarn clean && yarn run check && yarn run build",
+    "build:core": "tsc -p .",
+    "build": "yarn build:core",
+    "clean.builds": "gts clean",
+    "pretty.check": "prettier --check $npm_package_prettierGlob_include",
+    "pretty.fix": "prettier --write $npm_package_prettierGlob_include",
+    "clean": "yarn clean.builds && yarn clean.tests",
+    "clean.tests": "rm -rf *.lcov .nyc_output *.log coverage",
+    "test:postinstall": "yarn clean && yarn build && yarn test-impl --grep='#e2e' --invert",
+    "test": "yarn clean && yarn build && yarn test-impl",
+    "test-impl": "nyc --reporter=text --reporter=lcov mocha",
+    "test-impl-lcov": "nyc --reporter=lcov mocha",
+    "test-coverage": "yarn test && yarn test.examples && yarn report-coverage",
+    "report-coverage": "nyc report --reporter=json && codecov -F unit -f coverage/*.json",
+    "lint": "yarn fix && yarn run check",
+    "check": "yarn run pretty.check && gts check",
+    "fix": "yarn run pretty.fix && gts fix",
+    "test.examples": "echo no examples",
+    "preversion": "yarn test && yarn test.examples",
+    "docs": "yarn clean && yarn build && rm -rf docs && mkdir -p docs && ( mocha --grep='#private' --invert -R markdown >docs/index.md )",
+    "test-unit": "yarn test --grep='#e2e|#int' --invert",
+    "test-e2e": "yarn test --grep='#e2e'",
+    "test-int": "yarn test --grep='#int'",
+    "up": "yarn upgrade-interactive --latest",
+    "yarn": "rm -rf yarn.lock node_modules/ && yarn",
+    "semantic-release": "semantic-release"
+  },
+  "prettierGlob": {
+    "include": "**/*.yml **/*.yaml **/*.md **/*.json *.js !CHANGELOG.md"
+  },
+  "sideEffects": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn clean && yarn run check && yarn test:postinstall && yarn test.examples"
+    }
+  },
+  "release": {
+    "extends": "@holvonix-open/release-config-js"
+  },
+  "nyc": {
+    "skip-full": true,
+    "cache": false,
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "source-map-support/register",
+      "ts-node/register"
+    ],
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "build/src/**/*.js",
+      "build/src/**/*.jsx"
+    ],
+    "exclude": [],
+    "all": true
+  },
+  "mocha": {
+    "require": [
+      "source-map-support/register",
+      "ts-node/register"
+    ],
+    "forbid-pending": true,
+    "spec": "./build/test/**/test-*.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@holvonix-open/release-config-js": "^1.0.3",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^12.7.1",
+    "codecov": "^3.4.0",
+    "concurrently": "^4.1.1",
+    "gts": "^1.0.0",
+    "husky": "^3.0.3",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "source-map-support": "^0.5.12",
+    "ts-mocha": "^6.0.0",
+    "typescript": "~3.5.0"
+  }
+}
