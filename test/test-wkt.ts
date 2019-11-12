@@ -39,9 +39,7 @@ describe('wkt', () => {
       ];
       for (const x of wkts) {
         const d = lib.DirectGeometryFromWKTString.decode(x);
-        if (isRight(d)) {
-          assert.deepStrictEqual(d.right, {}, x);
-        }
+        assert.ok(isLeft(d));
       }
     });
     describe('fuzzing', async () => {
@@ -77,11 +75,6 @@ describe('wkt', () => {
 
           const d = lib.DirectGeometryFromWKTString.decode(x);
           if (!isRight(d)) {
-            assert.deepStrictEqual(
-              {},
-              gjd.right,
-              'could not decode the WKT: ' + x
-            );
             throw new Error();
           }
           assert.deepStrictEqual(d.right, expected);
@@ -112,9 +105,7 @@ describe('wkt', () => {
       ];
       for (const x of wkts) {
         const d = lib.GeometryFromWKTString.decode(x);
-        if (isRight(d)) {
-          assert.deepStrictEqual(d.right, {}, x);
-        }
+        assert.ok(isLeft(d));
       }
     });
     describe('fuzzing', async () => {
@@ -157,11 +148,6 @@ describe('wkt', () => {
 
           const d = lib.GeometryFromWKTString.decode(x);
           if (!isRight(d)) {
-            assert.deepStrictEqual(
-              {},
-              gjd.right,
-              'could not decode the WKT: ' + x
-            );
             throw new Error();
           }
           assert.deepStrictEqual(d.right, expected);
@@ -183,9 +169,7 @@ describe('wkt', () => {
       ];
       for (const x of wkts) {
         const d = lib.WKTStringFromGeometry.decode(x);
-        if (isRight(d)) {
-          assert.deepStrictEqual(d.right, {}, x);
-        }
+        assert.ok(isLeft(d));
       }
     });
     describe('fuzzing', async () => {
@@ -198,10 +182,7 @@ describe('wkt', () => {
         for (const i of new Array(fuzzCount).keys()) {
           const gju = gen.encode([i, fuzzCtx]);
           const d = lib.WKTStringFromGeometry.decode(gju);
-          if (!isRight(d)) {
-            assert.deepStrictEqual({}, gju, 'could not decode the WKT');
-            throw new Error();
-          }
+          assert.ok(isRight(d));
         }
       });
 
@@ -254,9 +235,7 @@ describe('wkt', () => {
       ];
       for (const x of wkts) {
         const d = lib.WKT.decode(x);
-        if (isRight(d)) {
-          assert.deepStrictEqual(d.right, {}, x);
-        }
+        assert.ok(isLeft(d));
       }
     });
   });
