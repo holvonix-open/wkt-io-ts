@@ -115,7 +115,7 @@
     "wkx": "^0.4.8"
   },
   "devDependencies": {
-    "@holvonix-open/release-config-js": "^1.0.4",
+    "@holvonix-open/release-config-js": "^1.0.13",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
     "@types/node": "^12.7.1",
