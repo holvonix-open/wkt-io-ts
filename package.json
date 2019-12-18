@@ -122,7 +122,7 @@
     "chai": "^4.2.0",
     "chokidar-cli": "^2.0.0",
     "codecov": "^3.4.0",
-    "concurrently": "^5.0.0",
+    "concurrently": "^5.0.1",
     "gts": "^1.0.0",
     "husky": "^3.0.3",
     "io-ts-fuzzer": "^4.3.2",
