@@ -2481,9 +2481,9 @@ io-ts-fuzzer@^4.3.2:
     seedrandom "^3.0.1"
 
 io-ts-types@^0.5.0:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.3.tgz#c9421e051cc380fb73f8a5d099ba85655aa98728"
-  integrity sha512-n49taXKrh60QTmbfPEQGuuHAawansXCrcqGDv+KmZkj0Xnf4ulR1jlSNXmHPVqJ74owLO4u1XMv1EVBmAFPSYw==
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.6.tgz#4d9afdf7220d865c5bf74f30d9b2fcf1d51f11e3"
+  integrity sha512-E8mClvIN6sotGqICJQMyt8nMG9VkwejRYwOcKjAj5hndlWib9o8MRmP3HiyVK4Mn1lrpY6bB/B3LrMcV/HcWGQ==
 
 io-ts@^2.0.1:
   version "2.0.1"
